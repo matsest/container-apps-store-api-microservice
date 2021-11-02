@@ -15,17 +15,17 @@ param secrets array = [
   }
 ]
 
-@allowed([
-  'multiple'
-  'single'
-])
-param revisionMode string = 'multiple'
+//@allowed([
+//  'multiple'
+//  'single'
+//])
+//param revisionMode string = 'multiple'
 
 @secure()
 param containerRegistryPassword string
 
-var cpu = json('0.5')
-var memory = '500Mi'
+//var cpu = json('0.5')
+//var memory = '500Mi'
 var registrySecretRefName = 'docker-password'
 
 resource containerApp 'Microsoft.App/containerApps@2022-01-01-preview' = {

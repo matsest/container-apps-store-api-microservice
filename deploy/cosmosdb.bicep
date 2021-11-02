@@ -33,10 +33,10 @@ param databaseName string = 'ordersDb'
 @description('The name for the container')
 param containerName string = 'orders'
 
-@description('Maximum throughput for the container')
-@minValue(4000)
-@maxValue(1000000)
-param autoscaleMaxThroughput int = 4000
+//@description('Maximum throughput for the container')
+//@minValue(4000)
+//@maxValue(1000000)
+//param autoscaleMaxThroughput int = 4000
 
 var accountName_var = toLower(accountName)
 var consistencyPolicy = {

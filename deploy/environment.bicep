@@ -21,7 +21,7 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' = {
   name: appInsightsName
   location: location
   kind: 'web'
-  properties: { 
+  properties: {
     Application_Type: 'web'
     Flow_Type: 'Redfield'
     Request_Source: 'CustomDeployment'
