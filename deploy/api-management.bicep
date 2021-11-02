@@ -12,6 +12,8 @@ param publisherEmail string
 ])
 param sku string = 'Consumption'
 
+param appInsightsName string
+
 resource storeapim 'Microsoft.ApiManagement/service@2020-12-01' = {
   name: apimName
   location: apimLocation
@@ -25,6 +27,23 @@ resource storeapim 'Microsoft.ApiManagement/service@2020-12-01' = {
   }
   identity: {
     type: 'SystemAssigned'
+  }
+}
+
+resource appInsights 'Microsoft.Insights/components@2020-02-02-preview' existing = {
+  name: appInsightsName
+}
+
+resource storeapimLogger 'Microsoft.ApiManagement/service/loggers@2020-12-01' = {
+  name: appInsightsName
+  parent: storeapim
+  properties: {
+    loggerType: 'applicationInsights'
+    credentials: {
+      instrumentationKey: appInsights.properties.InstrumentationKey
+    }
+    description: 'sends logs to ${appInsightsName}'
+    resourceId: appInsights.id
   }
 }
 

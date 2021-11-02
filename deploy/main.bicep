@@ -47,6 +47,7 @@ module apim 'api-management.bicep' = {
     publisherName: 'Contoso Store'
     publisherEmail: 'demo@example.com'
     apimLocation: location
+    appInsightsName: environment.outputs.appInsightsName
   }
 }
 
